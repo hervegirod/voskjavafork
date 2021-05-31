@@ -3,7 +3,7 @@ A fork of the Vosk Java wrapper. The vosk project is at https://github.com/alpha
 
 Note that the C source code is unchanged. This fork only change the Java wrapper (which is the reason why I did not fork the whole project on github). The Java code fork is beginning from the 0.3.29 version of the Java code and the 0.3.27 version for the dlls.
 
-For more information about the voks project, go to: https://alphacephei.com/vosk/
+For more information about the vosk project, go to: https://alphacephei.com/vosk/
 
 # Changes
 The changes from the original project are:
