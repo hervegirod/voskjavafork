@@ -74,7 +74,7 @@ or
   ```
 
 ## Result
-The recognizer result is a JSON file containg the detected words. The last "text" node is the finally recognized text.
+The recognizer result is a JSON file containing the detected words. The last "text" node is the finally recognized text.
 For example:
   ```
 {
