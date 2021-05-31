@@ -13,7 +13,7 @@ The changes from the original project are:
 * port the Sphynx mechanism to handle microphone input
 
 # Models
-Ready-to-use vosk modesl are available at https://alphacephei.com/vosk/models
+Ready-to-use vosk models are available at https://alphacephei.com/vosk/models
 
 # History
 * 0.3.27 : initial version of the fork
