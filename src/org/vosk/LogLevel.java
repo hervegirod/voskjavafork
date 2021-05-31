@@ -5,6 +5,18 @@ package org.vosk;
  */
 public enum LogLevel {
    /**
+    * Print nothing.
+    */
+   SILENT(-10), // silent
+   /**
+    * Print assert failed.
+    */
+   ASSERT_FAILED(-3), // assert failed
+   /**
+    * Print errors.
+    */
+   ERRORS(-2), // Print errors
+   /**
     * Print warning and errors.
     */
    WARNINGS(-1), // Print warning and errors
