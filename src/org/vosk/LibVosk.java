@@ -52,6 +52,11 @@ public class LibVosk {
       return libVosk;
    }
 
+   /**
+    * Return the internal vosk element which wrap the native functions.
+    *
+    * @return
+    */
    public static Vosk getVosk() {
       return libVosk.vosk;
    }

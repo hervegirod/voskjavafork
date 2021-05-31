@@ -7,7 +7,7 @@
 package org.vosk;
 
 /**
- * This class provides several System utilities.
+ * This class provides several System utilities to get the OS and the architecture.
  */
 class SystemUtils {
    private static final short OS_UNDEFINED = -1;
