@@ -72,3 +72,33 @@ or
          }
       }
   ```
+
+## Result
+The recognizer result is a JSON file containg the detected words. The last "text" node is the finally recognized text.
+For example:
+  ```
+{
+  "result" : [{
+      "conf" : 0.944314,
+      "end" : 1.020000,
+      "start" : 0.660000,
+      "word" : "this"
+    }, {
+      "conf" : 0.944314,
+      "end" : 1.200000,
+      "start" : 1.020000,
+      "word" : "is"
+    }, {
+      "conf" : 0.944314,
+      "end" : 1.290000,
+      "start" : 1.200000,
+      "word" : "a"
+    }, {
+      "conf" : 0.367768,
+      "end" : 2.070000,
+      "start" : 1.290000,
+      "word" : "tester"
+    }],
+  "text" : "this is a tester"
+}
+  ```
