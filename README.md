@@ -11,6 +11,7 @@ The changes from the original project are:
 * don't distribute  the dlls inside the jar file. Now it is necessary to specify the directory to use for the native libraries
 * distribute the livrary with the JNA libraries
 * port the Sphynx mechanism to handle microphone input
+* add new enum states for the log level
 
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directpry only contains
@@ -18,6 +19,7 @@ the simple vosk-model-small-en-us-0.15 model. You should use the model best suit
 
 # History
 * 0.3.27 : initial version of the fork
+* 0.3.27.1 : add new enum states for the log level
 
 # Usage
 ## Registering the native libraries
