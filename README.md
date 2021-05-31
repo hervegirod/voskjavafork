@@ -19,3 +19,55 @@ Ready-to-use vosk models are available at https://alphacephei.com/vosk/models
 * 0.3.27 : initial version of the fork
 
 # Usage
+## Registering the native libraries
+  ```
+  // register the native libraries
+  File libDir = <directory of the native vosk libraries>
+  LibVosk.register(libDir);
+  ```
+or
+  ```
+  // register the native libraries
+  URL urlDir = <directory of the native vosk libraries>
+  LibVosk.register(urlDir);
+  ```
+
+## Setting the log level
+For example:
+  ```
+  LibVosk.setLogLevel(LogLevel.WARNINGS);
+  ```
+
+## Specifying the Model
+The path of the model unzipped directory must be used for the model.
+  ```
+  Model model = new Model("<model path>");
+  ```
+or 
+  ```
+  File dir = <directory of the model>
+  Model model = new Model(dir);
+  ```
+or 
+  ```
+  URL dir = <directory of the model>
+  Model model = new Model(dir);
+  ```
+
+## Using the microphone
+
+  ```
+      Microphone microphone = SpeechSourceProvider.getMicrophone();
+      microphone.startRecording();
+      try (Model model = new Model("model");
+         InputStream ais = microphone.getStream();
+         Recognizer recognizer = new Recognizer(model, 16000)) {
+         int nbytes;
+         byte[] b = new byte[4096];
+         while ((nbytes = ais.read(b)) >= 0) {
+            if (recognizer.acceptWaveForm(b, nbytes)) {
+               System.out.println(recognizer.getResult());
+            }
+         }
+      }
+  ```
