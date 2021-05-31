@@ -71,6 +71,7 @@
          </fileset>              
          <fileset defaultexcludes="yes" dir="." >
             <include name="LICENCE"/>
+            <include name="README.md"/>
          </fileset>         
       </zip>
    </target>
@@ -97,6 +98,7 @@
          </fileset>  
          <fileset defaultexcludes="yes" dir="." >
             <include name="LICENCE"/>
+            <include name="README.md"/>
          </fileset>         
          <fileset description="miscellanous" dir=".">
             <include name="nbproject/**/*.*"/>
