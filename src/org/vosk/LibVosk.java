@@ -1,9 +1,12 @@
 package org.vosk;
 
+import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.NativeLibrary;
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LibVosk {
    private static LibVosk libVosk = null;
@@ -16,29 +19,51 @@ public class LibVosk {
    }
 
    /**
-    * Register the libraries.
+    * Register the libraries. Use the default encoding of the Java platform.
     *
     * @param file the directory
     * @return the LibVosk instance
     */
    public static LibVosk register(File file) {
+      return register(file, null);
+   }
+
+   /**
+    * Register the libraries.
+    *
+    * @param file the directory
+    * @param encoding the encoding
+    * @return the LibVosk instance
+    */
+   public static LibVosk register(File file, String encoding) {
       if (libVosk == null) {
          libVosk = new LibVosk();
-         libVosk.registerImpl(file);
+         libVosk.registerImpl(file, encoding);
       }
       return libVosk;
+   }
+
+   /**
+    * Register the libraries. Use the default encoding of the Java platform.
+    *
+    * @param url the directory
+    * @return the LibVosk instance
+    */
+   public static LibVosk register(URL url) {
+      return register(url, null);
    }
 
    /**
     * Register the libraries.
     *
     * @param url the directory
+    * @param encoding the encoding
     * @return the LibVosk instance
     */
-   public static LibVosk register(URL url) {
+   public static LibVosk register(URL url, String encoding) {
       if (libVosk == null) {
          libVosk = new LibVosk();
-         libVosk.registerImpl(url);
+         libVosk.registerImpl(url, encoding);
       }
       return libVosk;
    }
@@ -61,7 +86,7 @@ public class LibVosk {
       return libVosk.vosk;
    }
 
-   private void registerImpl(File file) {
+   private void registerImpl(File file, String encoding) {
       Native.setProtected(true);
       String path = file.getPath();
       short type = SystemUtils.getPlatformType();
@@ -81,13 +106,20 @@ public class LibVosk {
          }
       } else if (type == SystemUtils.OS_LINUX) {
          NativeLibrary.addSearchPath("libvosk", path);
-         vosk = Native.loadLibrary("libvosk", Vosk.class);
+         Map<String, Object> options = new HashMap<>();
+         if (encoding != null) {
+            options.put(Library.OPTION_STRING_ENCODING, encoding);
+            vosk = Native.load("libvosk", Vosk.class, options);
+         } else {
+            vosk = Native.load("libvosk", Vosk.class);
+         }
+
       }
    }
 
-   private void registerImpl(URL url) {
+   private void registerImpl(URL url, String encoding) {
       File file = new File(url.getFile());
-      registerImpl(file);
+      registerImpl(file, encoding);
    }
 
    public static void end(Model model) {

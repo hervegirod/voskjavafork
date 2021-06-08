@@ -20,6 +20,7 @@ the simple vosk-model-small-en-us-0.15 model. You should use the model best suit
 # History
 * 0.3.27 : initial version of the fork
 * 0.3.27.1 : add new enum states for the log level
+* 0.3.27.2 : allow to specify the String encoding to use
 
 # Usage
 ## Registering the native libraries
@@ -33,6 +34,20 @@ or
   // register the native libraries
   URL urlDir = <directory of the native vosk libraries>
   LibVosk.register(urlDir);
+  ```
+
+## Specifying the String encoding
+  It is possible to specify the String when registering the native libraries. For example:
+  ```
+  // register the native libraries
+  File libDir = <directory of the native vosk libraries>
+  LibVosk.register(libDir, "UTF-8");
+  ```
+or
+  ```
+  // register the native libraries
+  URL urlDir = <directory of the native vosk libraries>
+  LibVosk.register(urlDir, "UTF-8");
   ```
 
 ## Setting the log level
