@@ -7,14 +7,14 @@ import java.net.URL;
 
 import javax.sound.sampled.AudioSystem;
 
-public class DecoderDemo2 {
+public class DecoderDemoRAF {
    public static void main(String[] argv) throws Exception {
       File dir = new File(System.getProperty("user.dir"));
       File lib = new File(dir, "native/win32-x86-64/");
       LibVosk.register(lib);
       LibVosk.setLogLevel(LogLevel.WARNINGS);
 
-      URL testURL = DecoderDemo2.class.getResource("test2.wav");
+      URL testURL = DecoderDemoRAF.class.getResource("test3.wav");
       try (Model model = new Model("model");
          InputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(testURL.openStream()));
          Recognizer recognizer = new Recognizer(model, 16000)) {
