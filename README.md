@@ -21,6 +21,7 @@ the simple vosk-model-small-en-us-0.15 model. You should use the model best suit
 * 0.3.27 : initial version of the fork
 * 0.3.27.1 : add new enum states for the log level
 * 0.3.27.2 : allow to specify the String encoding to use
+* 0.3.30.1 : use the 0.3.30 vosk version
 
 # Usage
 ## Registering the native libraries
