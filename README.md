@@ -1,17 +1,24 @@
 # voskjavafork
 A fork of the Vosk Java wrapper. The vosk project is at https://github.com/alphacep/vosk-api
 
-Note that the C source code is unchanged. This fork only change the Java wrapper (which is the reason why I did not fork the whole project on github). The Java code fork is beginning from the 0.3.29 version of the Java code and the 0.3.27 version for the dlls.
+Note that the C source code is unchanged. This fork only change the Java wrapper (which is the reason why I did not fork the whole project on github). 
 
 For more information about the vosk project, go to: https://alphacephei.com/vosk/
 
 # Changes
 The changes from the original project are:
+## 0.3.27.2
+The Java code fork is beginning from the 0.3.29 version of the Java code and the 0.3.27 version for the dlls. The changes from the
+original project are:
 * changing the way the libraries are loaded. The initial way was a little cumbersome. This one is simpler
 * don't distribute  the dlls inside the jar file. Now it is necessary to specify the directory to use for the native libraries
-* distribute the livrary with the JNA libraries
+* distribute the library with the JNA libraries
 * port the Sphynx mechanism to handle microphone input
 * add new enum states for the log level
+
+## 0.3.30.1
+* Use the 0.3.30 version of the vosk project
+* Add the support for several methods which were added in the 0.3.30 of vosk
 
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directpry only contains
@@ -93,7 +100,15 @@ or
 
 ## Result
 The recognizer result is a JSON file containing the detected words. The last "text" node is the finally recognized text.
-For example:
+
+With the default recognizer configuration:
+  ```
+{
+  "text" : "this is a tester"
+}
+  ```
+
+With `Recognizer.setWords(true)`:
   ```
 {
   "result" : [{
