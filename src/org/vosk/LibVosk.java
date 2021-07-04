@@ -8,6 +8,11 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The vosk library wrapper. Creates and call the {@link Vosk} instance internally.
+ *
+ * @version 0.3.30.1
+ */
 public class LibVosk {
    private static LibVosk libVosk = null;
    /**
@@ -122,11 +127,31 @@ public class LibVosk {
       registerImpl(file, encoding);
    }
 
+   /**
+    * Free the model. Defer to {@link #free(org.vosk.Model)}.
+    *
+    * @param model the model
+    */
+   @Deprecated
    public static void end(Model model) {
+      free(model);
+   }
+
+   /**
+    * Free the model.
+    *
+    * @param model the model
+    */
+   public static void free(Model model) {
       libVosk.vosk.vosk_set_log_level(99999);
       libVosk.vosk.vosk_model_free(model.getPointer());
    }
 
+   /**
+    * Set the Log level.
+    *
+    * @param loglevel the Log level
+    */
    public static void setLogLevel(LogLevel loglevel) {
       libVosk.vosk.vosk_set_log_level(loglevel.getValue());
    }

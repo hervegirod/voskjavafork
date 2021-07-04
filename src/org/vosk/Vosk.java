@@ -5,6 +5,8 @@ import com.sun.jna.Pointer;
 
 /**
  * The vosk native library wrapper.
+ *
+ * @version 0.3.30.1
  */
 public interface Vosk extends Library {
    /**
@@ -81,6 +83,33 @@ public interface Vosk extends Library {
    public Pointer vosk_recognizer_new_grm(Pointer model, float sample_rate, String grammar);
 
    /**
+    * Set the maximum number of alternatives. Note that it is preferable not to use this method directly, but to use the
+    * {@link Recognizer#setMaxAlternatives(int)} method.
+    *
+    * @param model the model
+    * @param max_alternatives the maximum number of alternatives
+    */
+   public void vosk_recognizer_set_max_alternatives(Pointer model, int max_alternatives);
+
+   /**
+    * Set if the recognized words are included in the result. Note that it is preferable not to use this method directly, but to use the
+    * {@link Recognizer#setWords(boolean)} method.
+    *
+    * @param model the model
+    * @param words true if the recognized words are included in the result
+    */
+   public void vosk_recognizer_set_words(Pointer model, boolean words);
+
+   /**
+    * Set the speaker model to an existing Recognizer. Note that it is preferable not to use this method directly, but to use the
+    * {@link Recognizer#setSpkModel(org.vosk.SpeakerModel)} method.
+    *
+    * @param model the model
+    * @param spk_model the speaker model
+    */
+   public void vosk_recognizer_set_spk_model(Pointer model, Pointer spk_model);
+
+   /**
     * Try a recognition. Note that it is preferable not to use this method directly, but to use the
     * {@link Recognizer#acceptWaveForm(byte[], int)} method.
     *
@@ -141,8 +170,16 @@ public interface Vosk extends Library {
    public String vosk_recognizer_partial_result(Pointer recognizer);
 
    /**
+    * Reset the recognizer partial result. Note that it is preferable not to use this method directly, but to use the
+    * {@link Recognizer#reset()} method.
+    *
+    * @param recognizer the recognizer pointer
+    */
+   public void vosk_recognizer_reset(Pointer recognizer);
+
+   /**
     * Free the recognizer. Note that it is preferable not to use this method directly, but to use the
-    * {@link Recognizer#close() } method.
+    * {@link Recognizer#close()} method.
     *
     * @param recognizer the recognizer pointer
     */

@@ -4,6 +4,8 @@ import com.sun.jna.PointerType;
 
 /**
  * The recognizer.
+ *
+ * @version 0.3.30.1
  */
 public class Recognizer extends PointerType implements AutoCloseable {
    /**
@@ -39,6 +41,34 @@ public class Recognizer extends PointerType implements AutoCloseable {
    }
 
    /**
+    * Set the speaker model to this Recognizer.
+    *
+    * @param spkModel the speaker model
+    */
+   public void setSpkModel(SpeakerModel spkModel) {
+      LibVosk.getVosk().vosk_recognizer_set_spk_model(this.getPointer(), spkModel.getPointer());
+   }
+
+   /**
+    * Set the maximum number of alternatives.
+    *
+    * @param maxAlternatives the maximum number of alternatives
+    */
+   public void setMaxAlternatives(int maxAlternatives) {
+      LibVosk.getVosk().vosk_recognizer_set_max_alternatives(this.getPointer(), maxAlternatives);
+   }
+
+   /**
+    * Set if the recognized words are included in the result. By default only the final result is provided in the JSON result, and
+    * words confidence is not provided.
+    *
+    * @param words true if the recognized words are included in the result
+    */
+   public void setWords(boolean words) {
+      LibVosk.getVosk().vosk_recognizer_set_words(this.getPointer(), words);
+   }
+
+   /**
     * Try a recognition.
     *
     * @param data the data array
@@ -69,6 +99,13 @@ public class Recognizer extends PointerType implements AutoCloseable {
     */
    public boolean acceptWaveForm(float[] data, int len) {
       return LibVosk.getVosk().vosk_recognizer_accept_waveform_f(this.getPointer(), data, len);
+   }
+
+   /**
+    * Reset the recognizer partial result..
+    */
+   public void reset() {
+      LibVosk.getVosk().vosk_recognizer_reset(this.getPointer());
    }
 
    /**
