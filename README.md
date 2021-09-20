@@ -21,7 +21,7 @@ original project are:
 * Add the support for several methods which were added in the 0.3.30 of vosk
 
 ## 0.3.31.1
-* Use the 0.3.31 version of the vosk project
+* Use the 0.3.31 version of the vosk project (Fixed RNNLM rescoring strategy, good with en-us-0.21 model)
 
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directpry only contains
