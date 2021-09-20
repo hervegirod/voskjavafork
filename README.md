@@ -20,6 +20,9 @@ original project are:
 * Use the 0.3.30 version of the vosk project
 * Add the support for several methods which were added in the 0.3.30 of vosk
 
+## 0.3.31.1
+* Use the 0.3.31 version of the vosk project
+
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directpry only contains
 the simple vosk-model-small-en-us-0.15 model. You should use the model best suited to your needs.
