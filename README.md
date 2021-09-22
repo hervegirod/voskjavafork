@@ -27,7 +27,7 @@ original project are:
 * Make sure that the logger doesn't log anything after the library is closed
 
 # Models
-Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directpry only contains
+Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directory only contains
 the simple vosk-model-small-en-us-0.15 model. You should use the model best suited to your needs.
 
 # History
