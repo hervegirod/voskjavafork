@@ -143,7 +143,7 @@ public class LibVosk {
     * @param model the model
     */
    public static void free(Model model) {
-      libVosk.vosk.vosk_set_log_level(99999);
+      libVosk.vosk.vosk_set_log_level(-99999);
       libVosk.vosk.vosk_model_free(model.getPointer());
    }
 

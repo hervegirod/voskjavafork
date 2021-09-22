@@ -23,6 +23,9 @@ original project are:
 ## 0.3.31.1
 * Use the 0.3.31 version of the vosk project (Fixed RNNLM rescoring strategy, good with en-us-0.21 model)
 
+## 0.3.31.2
+* Make sure that the logger doesn't log anything after the library is closed
+
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directpry only contains
 the simple vosk-model-small-en-us-0.15 model. You should use the model best suited to your needs.
@@ -137,4 +140,10 @@ With `Recognizer.setWords(true)`:
     }],
   "text" : "this is a tester"
 }
+  ```
+
+## Closing the native library
+To close the library, you can call the 'free' method:
+  ```
+  LibVosk.free(model);
   ```
