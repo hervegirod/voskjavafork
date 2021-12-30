@@ -26,6 +26,11 @@ original project are:
 ## 0.3.31.2
 * Make sure that the logger doesn't log anything after the library is closed
 
+## 0.3.32.1
+* Wrap exceptions on C++ size and raise them properly
+* Fbank support
+* Improved rescoring accuracy
+
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directory only contains
 the simple vosk-model-small-en-us-0.15 model. You should use the model best suited to your needs.

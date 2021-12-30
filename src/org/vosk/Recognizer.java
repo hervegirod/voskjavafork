@@ -1,11 +1,12 @@
 package org.vosk;
 
 import com.sun.jna.PointerType;
+import java.io.IOException;
 
 /**
  * The recognizer.
  *
- * @version 0.3.30.1
+ * @version 0.3.32.1
  */
 public class Recognizer extends PointerType implements AutoCloseable {
    /**
@@ -13,9 +14,14 @@ public class Recognizer extends PointerType implements AutoCloseable {
     *
     * @param model the model
     * @param sampleRate the sample rate
+    * @throws java.io.IOException throws an IOException if the associated pointer is null
     */
-   public Recognizer(Model model, float sampleRate) {
+   public Recognizer(Model model, float sampleRate) throws IOException {
       super(LibVosk.getVosk().vosk_recognizer_new(model, sampleRate));
+
+      if (getPointer() == null) {
+         throw new IOException("Failed to create a recognizer");
+      }
    }
 
    /**
@@ -41,15 +47,6 @@ public class Recognizer extends PointerType implements AutoCloseable {
    }
 
    /**
-    * Set the speaker model to this Recognizer.
-    *
-    * @param spkModel the speaker model
-    */
-   public void setSpkModel(SpeakerModel spkModel) {
-      LibVosk.getVosk().vosk_recognizer_set_spk_model(this.getPointer(), spkModel.getPointer());
-   }
-
-   /**
     * Set the maximum number of alternatives.
     *
     * @param maxAlternatives the maximum number of alternatives
@@ -66,6 +63,15 @@ public class Recognizer extends PointerType implements AutoCloseable {
     */
    public void setWords(boolean words) {
       LibVosk.getVosk().vosk_recognizer_set_words(this.getPointer(), words);
+   }
+
+   /**
+    * Set the speaker model to this Recognizer.
+    *
+    * @param spkModel the speaker model
+    */
+   public void setSpeakerModel(SpeakerModel spkModel) {
+      LibVosk.getVosk().vosk_recognizer_set_spk_model(this.getPointer(), spkModel.getPointer());
    }
 
    /**
@@ -102,13 +108,6 @@ public class Recognizer extends PointerType implements AutoCloseable {
    }
 
    /**
-    * Reset the recognizer partial result..
-    */
-   public void reset() {
-      LibVosk.getVosk().vosk_recognizer_reset(this.getPointer());
-   }
-
-   /**
     * Return the result. It is a JSON string.
     *
     * @return the result
@@ -133,6 +132,13 @@ public class Recognizer extends PointerType implements AutoCloseable {
     */
    public String getFinalResult() {
       return LibVosk.getVosk().vosk_recognizer_final_result(this.getPointer());
+   }
+
+   /**
+    * Reset the recognizer partial result..
+    */
+   public void reset() {
+      LibVosk.getVosk().vosk_recognizer_reset(this.getPointer());
    }
 
    /**
