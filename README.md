@@ -31,6 +31,9 @@ original project are:
 * Fbank support
 * Improved rescoring accuracy
 
+## 0.3.32.2
+* Get the last MAC OS X version of the native libraries
+
 # Models
 Ready-to-use vosk models are available at https://alphacephei.com/vosk/models. The default model directory only contains
 the simple vosk-model-small-en-us-0.15 model. You should use the model best suited to your needs.
