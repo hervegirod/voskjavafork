@@ -102,7 +102,7 @@ public interface Vosk extends Library {
 
    /**
     * Set the speaker model to an existing Recognizer. Note that it is preferable not to use this method directly, but to use the
-    * {@link Recognizer#setSpkModel(org.vosk.SpeakerModel)} method.
+    * {@link Recognizer#setSpeakerModel(org.vosk.SpeakerModel)} method.
     *
     * @param model the model
     * @param spk_model the speaker model
