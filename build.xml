@@ -134,7 +134,7 @@
                source="${javac.source}" splitindex="${javadoc.splitindex}"
                use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}"
                windowtitle="${javadoc.windowtitle}" executable="${javadocEXE}"
-               windowTitle="UAApplication API">
+               windowTitle="Vosk API">
          <link offline="true" href="${j2seapi}"
                packagelistLoc="${javadocDir}"/>
          <classpath>
