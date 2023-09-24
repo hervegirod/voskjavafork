@@ -20,6 +20,7 @@
       <property name="model.dir" value="model" />
       <property name="libs.dir" value="lib" />
       <property name="native.dir" value="native" />
+      <property name="jdk" value="C:\Program Files\Java\jdk1.8.0_202"/>
       <property name="javadocEXE" value="${jdk.home}/bin/javadoc.exe"/>
       <condition property="javadoc.exists">
          <available file="${dist.javadoc.dir}" type="dir"/>
@@ -65,14 +66,14 @@
          </fileset>
          <fileset description="native" dir=".">
             <include name="${native.dir}/**/*.*"/>
-         </fileset>              
+         </fileset>
          <fileset description="model" dir=".">
             <include name="${model.dir}/**/*.*"/>
-         </fileset>              
+         </fileset>
          <fileset defaultexcludes="yes" dir="." >
             <include name="LICENCE"/>
             <include name="README.md"/>
-         </fileset>         
+         </fileset>
       </zip>
    </target>
    <target depends="version, -post-init" name="-zipsources">
@@ -81,7 +82,7 @@
          <fileset description="source directory" dir="${src.dir}/..">
             <include name="src/**/*.java"/>
             <include name="src/**/*.html"/>
-            <include name="src/**/*.mf"/>       
+            <include name="src/**/*.mf"/>
             <include name="src/**/*.properties"/>
          </fileset>
          <fileset description="binaries" dir="${dist.dir}">
@@ -92,14 +93,14 @@
          </fileset>
          <fileset description="native" dir=".">
             <include name="${native.dir}/**/*.*"/>
-         </fileset>              
+         </fileset>
          <fileset description="model" dir=".">
             <include name="${model.dir}/**/*.*"/>
-         </fileset>  
+         </fileset>
          <fileset defaultexcludes="yes" dir="." >
             <include name="LICENCE"/>
             <include name="README.md"/>
-         </fileset>         
+         </fileset>
          <fileset description="miscellanous" dir=".">
             <include name="nbproject/**/*.*"/>
             <include name="build.xml"/>
@@ -114,8 +115,8 @@
             <include name="test/**/*.*"/>
          </fileset>
       </zip>
-   </target>      
-   
+   </target>
+
    <target depends="version, -post-init, -zipsources, -zipsources, -ziptestsources, -zipbinaries" description="create zip files" name="zip">
    </target>
 
@@ -163,5 +164,5 @@
             <include name="org/**/*.properties"/>
          </fileset>
       </jar>
-   </target> 
+   </target>
 </project>
