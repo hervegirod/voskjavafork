@@ -30,10 +30,10 @@ original project are:
 ## 0.3.45.1
 * Use Netbeans 12.5 for the development
 * Use the 0.3.45 version of the vosk project:
-** Small updates to model loading
-** Fixes in lattice construction
-** Transcriber with a server
-** Transcriber tool and model autodownload API
-** Add support for incremental decoding and partial lattices
+  - Small updates to model loading
+  - Fixes in lattice construction
+  - Transcriber with a server
+  - Transcriber tool and model autodownload API
+  - Add support for incremental decoding and partial lattices
 * Add the vosk_recognizer_set_partial_words and vosk_recognizer_set_grm methods in the Java Vosk interface
 * Use JNA 5.13.0
