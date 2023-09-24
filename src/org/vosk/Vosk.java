@@ -6,7 +6,7 @@ import com.sun.jna.Pointer;
 /**
  * The vosk native library wrapper.
  *
- * @version 0.3.30.1
+ * @version 0.3.45.1
  */
 public interface Vosk extends Library {
    /**
@@ -101,6 +101,15 @@ public interface Vosk extends Library {
    public void vosk_recognizer_set_words(Pointer model, boolean words);
 
    /**
+    * Set if the recognized words are included in the result. Note that it is preferable not to use this method directly, but to use the
+    * {@link Recognizer#setWords(boolean)} method.
+    *
+    * @param recognizer the recognizer pointer
+    * @param partial_words true if the partially recognized words are included in the result
+    */
+   public void vosk_recognizer_set_partial_words(Pointer recognizer, boolean partial_words);
+
+   /**
     * Set the speaker model to an existing Recognizer. Note that it is preferable not to use this method directly, but to use the
     * {@link Recognizer#setSpeakerModel(org.vosk.SpeakerModel)} method.
     *
@@ -168,6 +177,13 @@ public interface Vosk extends Library {
     * @return the result
     */
    public String vosk_recognizer_partial_result(Pointer recognizer);
+
+   /** Set the grammar to use.
+    *
+    * @param recognizer the recognizer pointer
+    * @param grammar set of phrases in JSON array of strings or "[]" to use default model graph.
+    */
+   public void vosk_recognizer_set_grm(Pointer recognizer, String grammar);
 
    /**
     * Reset the recognizer partial result. Note that it is preferable not to use this method directly, but to use the

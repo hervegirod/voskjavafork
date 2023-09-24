@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * The recognizer.
  *
- * @version 0.3.32.1
+ * @version 0.3.45.1
  */
 public class Recognizer extends PointerType implements AutoCloseable {
    /**
@@ -30,9 +30,14 @@ public class Recognizer extends PointerType implements AutoCloseable {
     * @param model the model
     * @param spkModel the speaker model
     * @param sampleRate the sample rate
+    * @throws java.io.IOException throws an IOException if the associated pointer is null
     */
-   public Recognizer(Model model, float sampleRate, SpeakerModel spkModel) {
+   public Recognizer(Model model, float sampleRate, SpeakerModel spkModel) throws IOException {
       super(LibVosk.getVosk().vosk_recognizer_new_spk(model.getPointer(), sampleRate, spkModel.getPointer()));
+
+      if (getPointer() == null) {
+         throw new IOException("Failed to create a recognizer");
+      }
    }
 
    /**
@@ -41,9 +46,14 @@ public class Recognizer extends PointerType implements AutoCloseable {
     * @param model the model
     * @param grammar the grammar
     * @param sampleRate the sample rate
+    * @throws java.io.IOException throws an IOException if the associated pointer is null
     */
-   public Recognizer(Model model, float sampleRate, String grammar) {
+   public Recognizer(Model model, float sampleRate, String grammar) throws IOException {
       super(LibVosk.getVosk().vosk_recognizer_new_grm(model.getPointer(), sampleRate, grammar));
+
+      if (getPointer() == null) {
+         throw new IOException("Failed to create a recognizer");
+      }
    }
 
    /**
@@ -63,6 +73,15 @@ public class Recognizer extends PointerType implements AutoCloseable {
     */
    public void setWords(boolean words) {
       LibVosk.getVosk().vosk_recognizer_set_words(this.getPointer(), words);
+   }
+
+   /**
+    * Like above return words and confidences in partial results.
+    *
+    * @param partial_words - boolean value
+    */
+   public void setPartialWords(boolean partial_words) {
+      LibVosk.getVosk().vosk_recognizer_set_partial_words(this.getPointer(), partial_words);
    }
 
    /**
@@ -132,6 +151,16 @@ public class Recognizer extends PointerType implements AutoCloseable {
     */
    public String getFinalResult() {
       return LibVosk.getVosk().vosk_recognizer_final_result(this.getPointer());
+   }
+
+   /**
+    * Reconfigures recognizer to use grammar.
+    *
+    * @param grammar Set of phrases in JSON array of strings or "[]" to use default model graph.
+    * @see #Recognizer(Model, float, String)
+    */
+   public void setGrammar(String grammar) {
+      LibVosk.getVosk().vosk_recognizer_set_grm(this.getPointer(), grammar);
    }
 
    /**
