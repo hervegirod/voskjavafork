@@ -21,7 +21,7 @@
       <property name="libs.dir" value="lib" />
       <property name="native.dir" value="native" />
       <property name="jdk" value="C:\Program Files\Java\jdk1.8.0_202"/>
-      <property name="javadocEXE" value="${jdk.home}/bin/javadoc.exe"/>
+      <property name="javadocEXE" value="${jdk}/bin/javadoc.exe"/>
       <condition property="javadoc.exists">
          <available file="${dist.javadoc.dir}" type="dir"/>
       </condition>
