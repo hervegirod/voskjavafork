@@ -73,6 +73,7 @@
          <fileset defaultexcludes="yes" dir="." >
             <include name="LICENCE"/>
             <include name="README.md"/>
+            <include name="HISTORY.md"/>
          </fileset>
       </zip>
    </target>
@@ -100,6 +101,7 @@
          <fileset defaultexcludes="yes" dir="." >
             <include name="LICENCE"/>
             <include name="README.md"/>
+            <include name="HISTORY.md"/>
          </fileset>
          <fileset description="miscellanous" dir=".">
             <include name="nbproject/**/*.*"/>
