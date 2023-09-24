@@ -134,8 +134,7 @@
                notree="${javadoc.notree}" private="${javadoc.private}"
                source="${javac.source}" splitindex="${javadoc.splitindex}"
                use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}"
-               windowtitle="${javadoc.windowtitle}" executable="${javadocEXE}"
-               windowTitle="Vosk API">
+               executable="${javadocEXE}" windowTitle="Vosk API">
          <link offline="true" href="${j2seapi}"
                packagelistLoc="${javadocDir}"/>
          <classpath>
